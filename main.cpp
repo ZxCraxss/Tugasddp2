@@ -36,7 +36,8 @@ void login_ncurses(WINDOW *menu_win) {
 
     wclear(menu_win);
     box(menu_win, 0, 0);
-    mvwprintw(menu_win, 1, 2, "----> LOGIN <----");
+    mvwprintw(menu_win, 1, 2, "-----------------> LOGIN <-----------------");
+
 
     mvwprintw(menu_win, 3, 2, "Masukkan Username: ");
     wrefresh(menu_win);
@@ -87,14 +88,16 @@ void login_ncurses(WINDOW *menu_win) {
 
     if (exist) {
         mvwprintw(menu_win, 7, 2, "Login Berhasil!");
+	mvwprintw(menu_win, 11, 2, "Tekan Enter untuk kembali ke menu.");
     } else {
         mvwprintw(menu_win, 7, 2, "------------------------------------------");
         mvwprintw(menu_win, 8, 2, "                 LOGIN GAGAL              ");
         mvwprintw(menu_win, 9, 2, "Periksa kembali username dan password anda");
         mvwprintw(menu_win, 10, 2, "------------------------------------------");
+	mvwprintw(menu_win, 11, 2, "Tekan Enter untuk kembali ke menu.");
     }
 
-    mvwprintw(menu_win, 11, 2, "Tekan Enter untuk kembali ke menu.");
+   
     wrefresh(menu_win);
     wgetch(menu_win);
 }
@@ -105,7 +108,8 @@ void registration_ncurses(WINDOW *menu_win) {
 
     wclear(menu_win);
     box(menu_win, 0, 0);
-    mvwprintw(menu_win, 1, 2, "----> REGISTER <----");
+    mvwprintw(menu_win, 1, 2, "---------------> REGISTER <---------------");
+
 
     mvwprintw(menu_win, 3, 2, "Masukkan Username: ");
     wrefresh(menu_win);
@@ -167,7 +171,8 @@ void registration_ncurses(WINDOW *menu_win) {
 void print_menu(WINDOW *menu_win, int pilihanTerpilih, char *opsi[], int jumlahopsi) {
     wclear(menu_win);
     box(menu_win, 0, 0);
-    mvwprintw(menu_win, 1, 2, "---- MENU ---");
+    mvwprintw(menu_win, 1, 2, "------------------ MENU ------------------");
+
 
     for (int i = 0; i < jumlahopsi; ++i) {
         if (i == pilihanTerpilih) {
