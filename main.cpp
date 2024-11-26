@@ -36,7 +36,7 @@ void login_ncurses(WINDOW *menu_win) {
 
     wclear(menu_win);
     box(menu_win, 0, 0);
-    mvwprintw(menu_win, 1, 2, "-----------------> LOGIN <-----------------");
+    mvwprintw(menu_win, 1, 2, "----------------> LOGIN <-----------------");
 
 
     mvwprintw(menu_win, 3, 2, "Masukkan Username : ");
