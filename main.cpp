@@ -39,7 +39,7 @@ void login_ncurses(WINDOW *menu_win) {
     mvwprintw(menu_win, 1, 2, "-----------------> LOGIN <-----------------");
 
 
-    mvwprintw(menu_win, 3, 2, "Masukkan Username: ");
+    mvwprintw(menu_win, 3, 2, "Masukkan Username : ");
     wrefresh(menu_win);
     echo();
     char username[50];
@@ -54,7 +54,7 @@ void login_ncurses(WINDOW *menu_win) {
         return;
     }
 
-    mvwprintw(menu_win, 5, 2, "Masukkan Password: ");
+    mvwprintw(menu_win, 5, 2, "Masukkan Password : ");
     wrefresh(menu_win);
     char password[50];
     wgetstr(menu_win, password);
@@ -87,14 +87,14 @@ void login_ncurses(WINDOW *menu_win) {
     refresh();
 
     if (exist) {
-        mvwprintw(menu_win, 7, 2, "Login Berhasil!");
-	mvwprintw(menu_win, 11, 2, "Tekan Enter untuk kembali ke menu.");
+        mvwprintw(menu_win, 5, 2, "Login Berhasil!");
+	mvwprintw(menu_win, 7, 2, "Tekan Enter untuk kembali ke menu.");
     } else {
+        mvwprintw(menu_win, 4, 2, "------------------------------------------");
+        mvwprintw(menu_win, 5, 2, "                 LOGIN GAGAL              ");
+        mvwprintw(menu_win, 6, 2, "Periksa kembali username dan password anda");
         mvwprintw(menu_win, 7, 2, "------------------------------------------");
-        mvwprintw(menu_win, 8, 2, "                 LOGIN GAGAL              ");
-        mvwprintw(menu_win, 9, 2, "Periksa kembali username dan password anda");
-        mvwprintw(menu_win, 10, 2, "------------------------------------------");
-	mvwprintw(menu_win, 11, 2, "Tekan Enter untuk kembali ke menu.");
+	mvwprintw(menu_win, 9, 2, "Tekan Enter untuk kembali ke menu.");
     }
 
    
@@ -111,7 +111,7 @@ void registration_ncurses(WINDOW *menu_win) {
     mvwprintw(menu_win, 1, 2, "---------------> REGISTER <---------------");
 
 
-    mvwprintw(menu_win, 3, 2, "Masukkan Username: ");
+    mvwprintw(menu_win, 3, 2, "Masukkan Username : ");
     wrefresh(menu_win);
     echo();
     char username[50];
@@ -126,7 +126,7 @@ void registration_ncurses(WINDOW *menu_win) {
         return;
     }
 
-    mvwprintw(menu_win, 5, 2, "Masukkan Password: ");
+    mvwprintw(menu_win, 5, 2, "Masukkan Password : ");
     wrefresh(menu_win);
     char password[50];
     wgetstr(menu_win, password);
@@ -162,8 +162,8 @@ void registration_ncurses(WINDOW *menu_win) {
     accList << userReg << endl;
     accList.close();
 
-    mvwprintw(menu_win, 7, 2, "Registrasi Berhasil!");
-    mvwprintw(menu_win, 8, 2, "Tekan Enter untuk kembali ke menu.");
+    mvwprintw(menu_win, 5, 2, "Registrasi Berhasil!");
+    mvwprintw(menu_win, 7, 2, "Tekan Enter untuk kembali ke menu.");
     wrefresh(menu_win);
     wgetch(menu_win);
 }
