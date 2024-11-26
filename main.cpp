@@ -30,7 +30,7 @@ void loading(WINDOW *menu_win){
 }
 
 void login_ncurses(WINDOW *menu_win) {
-    string userLog, passLog, userData;
+    string userLog, passLog, userData, savedPassword;
     ifstream myFile;
     bool exist = false;
 
@@ -82,19 +82,27 @@ void login_ncurses(WINDOW *menu_win) {
         }
     }
     myFile.close();
+    clear();
     loading(menu_win);
     clear();
 
     if (exist) {
-        mvwprintw(menu_win, 5, 2, "Login Berhasil!");
-	mvwprintw(menu_win, 7, 2, "Tekan Enter untuk kembali ke menu.");
-    } else {
-        mvwprintw(menu_win, 4, 2, "------------------------------------------");
-        mvwprintw(menu_win, 5, 2, "                 LOGIN GAGAL              ");
-        mvwprintw(menu_win, 6, 2, "Periksa kembali username dan password anda");
+    	mvwprintw(menu_win, 4, 2, "------------------------------------------");
+        mvwprintw(menu_win, 5, 2, "          USERNAME TIDAK DITEMUKAN        ");
+        mvwprintw(menu_win, 6, 2, "   Silakan periksa kembali username Anda. ");
         mvwprintw(menu_win, 7, 2, "------------------------------------------");
-	mvwprintw(menu_win, 9, 2, "Tekan Enter untuk kembali ke menu.");
+        mvwprintw(menu_win, 9, 2, "Tekan Enter untuk kembali ke menu.");
+        wrefresh(menu_win);
+        wgetch(menu_win);
+        return;
     }
+
+   ifstream userFile(userLog + ".txt");
+    if (userFile) {
+        getline(userFile, savedPassword);
+        userFile.close();
+        clear();    
+        
 
    
     wrefresh(menu_win);
@@ -145,7 +153,7 @@ void registration_ncurses(WINDOW *menu_win) {
         wgetch(menu_win);
         return;
     }
-    myFile << 0; 
+    myFile << passReg; 
     myFile.close();
     loading(menu_win);
     clear();
