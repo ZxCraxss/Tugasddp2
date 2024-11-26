@@ -102,9 +102,23 @@ void login_ncurses(WINDOW *menu_win) {
         getline(userFile, savedPassword);
         userFile.close();
         clear();    
-        
 
-   
+	if (passLog == savedPassword) {
+            mvwprintw(menu_win, 4, 2, "------------------------------------------");
+            mvwprintw(menu_win, 5, 2, "             LOGIN BERHASIL!              ");
+            mvwprintw(menu_win, 6, 2, "------------------------------------------");
+            mvwprintw(menu_win, 8, 2, "Tekan Enter untuk kembali ke menu.");
+        } else {
+            mvwprintw(menu_win, 4, 2, "------------------------------------------");
+            mvwprintw(menu_win, 5, 2, "             PASSWORD SALAH!              ");
+            mvwprintw(menu_win, 6, 2, "     Silakan coba lagi dengan benar.");
+            mvwprintw(menu_win, 7, 2, "------------------------------------------");
+            mvwprintw(menu_win, 9, 2, "Tekan Enter untuk kembali ke menu.");
+        }
+    } else {
+        mvwprintw(menu_win, 7, 2, "Kesalahan: File password tidak ditemukan!");
+    }
+
     wrefresh(menu_win);
     wgetch(menu_win);
 }
