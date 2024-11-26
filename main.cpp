@@ -159,9 +159,9 @@ int main() {
     cbreak();
     keypad(stdscr, TRUE);
 
-    int awalx = (COLS - 30) / 2;  
-    int awaly = (LINES - 15) / 2;
-    int lebar = 30, tinggi = 10;
+    int lebar = 45, tinggi = 13;
+    int awalx = (COLS - lebar) / 2;  
+    int awaly = (LINES - tinggi) / 2;
 
     WINDOW *menu_win = newwin(tinggi, lebar, awaly, awalx);
     keypad(menu_win, TRUE);
@@ -182,19 +182,26 @@ int main() {
         int tombol = wgetch(menu_win);
 
         switch (tombol) {
-            case KEY_UP:
-                pilihanTerpilih = (pilihanTerpilih == 0) ? jumlahopsi - 1 : pilihanTerpilih - 1;
+             case KEY_UP:
+                if (pilihanTerpilih == 0) {
+                    pilihanTerpilih = jumlahopsi - 1; 
+                } else {
+                    --pilihanTerpilih; 
+                }
                 break;
 
             case KEY_DOWN:
-                pilihanTerpilih = (pilihanTerpilih == jumlahopsi - 1) ? 0 : pilihanTerpilih + 1;
+                if (pilihanTerpilih == jumlahopsi - 1) {
+                    pilihanTerpilih = 0; 
+                } else {
+                    ++pilihanTerpilih;
+                }
                 break;
 
-            case 10:
-                pilihan = pilihanTerpilih;
+            case 10: 
+                pilihan = pilihanTerpilih; 
                 break;
         }
-
 
         if (pilihan == 0) {
             registration_ncurses(menu_win);
