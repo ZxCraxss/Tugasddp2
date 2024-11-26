@@ -86,7 +86,7 @@ void login_ncurses(WINDOW *menu_win) {
     loading(menu_win);
     clear();
 
-    if (exist) {
+    if (!exist) {
     	mvwprintw(menu_win, 4, 2, "------------------------------------------");
         mvwprintw(menu_win, 5, 2, "          USERNAME TIDAK DITEMUKAN        ");
         mvwprintw(menu_win, 6, 2, "   Silakan periksa kembali username Anda. ");
