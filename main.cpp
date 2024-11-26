@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <windows.h>
 
 using namespace std;
 
@@ -22,13 +23,11 @@ void loading(WINDOW *menu_win){
 			refresh();
 			Sleep(50);
 		}
-	
 	}
 	clear();
 	refresh();
 	endwin();
 }
-
 
 void login_ncurses(WINDOW *menu_win) {
     string userLog, passLog, userData;
@@ -82,6 +81,9 @@ void login_ncurses(WINDOW *menu_win) {
         }
     }
     myFile.close();
+    loading(menu_win);
+    clear();
+    refresh();
 
     if (exist) {
         mvwprintw(menu_win, 7, 2, "Login Berhasil!");
@@ -142,6 +144,9 @@ void registration_ncurses(WINDOW *menu_win) {
     }
     myFile << 0; 
     myFile.close();
+    loading(menu_win);
+    clear();
+    refresh();
 
     accList.open(accountsFile, ios::app);
     if (!accList) {
