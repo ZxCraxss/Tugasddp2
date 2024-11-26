@@ -84,7 +84,6 @@ void login_ncurses(WINDOW *menu_win) {
     myFile.close();
     loading(menu_win);
     clear();
-    refresh();
 
     if (exist) {
         mvwprintw(menu_win, 5, 2, "Login Berhasil!");
@@ -150,7 +149,6 @@ void registration_ncurses(WINDOW *menu_win) {
     myFile.close();
     loading(menu_win);
     clear();
-    refresh();
 
     accList.open(accountsFile, ios::app);
     if (!accList) {
