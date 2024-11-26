@@ -6,6 +6,29 @@
 using namespace std;
 
 string accountsFile = "ListAccount.txt";
+void loading(WINDOW *menu_win){
+	initscr();
+	wclear(menu_win);
+	box(menu_win, 0, 0);
+	
+	for (int i= 0; i < 3; i++){
+		mvprintw(12.5,41,"Loading...");
+		mvprintw(13.5,41,"-----------------------------------");
+		mvprintw(14.5,41,"|                                 |");
+		mvprintw(15.5,41,"-----------------------------------");
+		
+		for (int f = 1; f<34; f++){
+			mvprintw(14.5,41 + f, ">");
+			refresh();
+			Sleep(50);
+		}
+	
+	}
+	clear();
+	refresh();
+	endwin();
+}
+
 
 void login_ncurses(WINDOW *menu_win) {
     string userLog, passLog, userData;
